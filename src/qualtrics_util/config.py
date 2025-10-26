@@ -11,6 +11,7 @@ from pathlib import Path
 from typing import Dict, Any, Optional
 import yaml
 from dotenv import dotenv_values
+from zoneinfo import ZoneInfo
 
 
 class ConfigLoader:
@@ -20,6 +21,8 @@ class ConfigLoader:
         self.config: Dict[str, Any] = {}
         self.api_token: Optional[str] = None
         self._base_dir = self._find_base_directory()
+        self._config_file_path: Optional[str] = None
+        self._config_file_lines: list = []
     
     def _find_base_directory(self) -> Path:
         """
@@ -96,11 +99,18 @@ class ConfigLoader:
         
         try:
             with open(config_path, 'r') as f:
+                # Store file content for line number lookup
+                self._config_file_lines = f.readlines()
+                f.seek(0)  # Reset file pointer
+                self._config_file_path = str(config_path)
                 self.config = yaml.safe_load(f)
             
             if not self.config:
                 print("Error: Configuration file is empty")
                 return False
+            
+            # Validate timezones
+            self._validate_timezones()
                 
             return True
             
@@ -197,6 +207,61 @@ class ConfigLoader:
                 return False
         
         return True
+    
+    def _validate_timezones(self):
+        """
+        Validate IANA timezones in configuration.
+        
+        Raises:
+            ValueError: If timezone is invalid
+        """
+        # Validate project timezone
+        timezone_str = self.config.get('project', {}).get('TIMEZONE')
+        if timezone_str:
+            self._validate_timezone(timezone_str, 'project:TIMEZONE', 'TIMEZONE')
+        
+        # Validate embedded_data timezone
+        timezone_str = self.config.get('embedded_data', {}).get('TimeZone')
+        if timezone_str:
+            self._validate_timezone(timezone_str, 'embedded_data:TimeZone', 'TimeZone')
+    
+    def _validate_timezone(self, timezone_str: str, field_name: str, key_name: str):
+        """
+        Validate that a timezone string is a valid IANA timezone.
+        
+        Args:
+            timezone_str: The timezone string to validate
+            field_name: The field name for error reporting
+            key_name: The key name to search for in the config file
+        
+        Raises:
+            ValueError: If timezone is invalid
+        """
+        try:
+            # Try to create a ZoneInfo object with the timezone string
+            ZoneInfo(timezone_str)
+        except (ValueError, Exception) as e:
+            # Find the line number in the config file
+            line_num = self._find_line_number(key_name)
+            file_info = f" in {self._config_file_path}" if self._config_file_path else ""
+            line_info = f" on line {line_num}" if line_num > 0 else ""
+            
+            # Catch both ValueError and ZoneInfoNotFoundError
+            raise ValueError(
+                f"Invalid timezone '{timezone_str}' in {field_name}{line_info}{file_info}. "
+                f"It must be a valid IANA timezone name (e.g., 'America/New_York', 'Europe/London'). "
+                f"Error: {e}"
+            )
+    
+    def _find_line_number(self, key_name: str) -> int:
+        """Find the line number of a key in the config file."""
+        if not self._config_file_lines:
+            return 0
+        
+        for i, line in enumerate(self._config_file_lines, start=1):
+            if key_name in line:
+                return i
+        return 0
 
 
 def load_configuration(config_file: Optional[str] = None, 
