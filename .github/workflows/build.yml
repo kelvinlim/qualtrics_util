@@ -83,12 +83,8 @@ jobs:
       run: |
         mkdir -p release-assets
         
-        # Copy all executables to release-assets
-        for dir in artifacts/*/; do
-          if [ -d "$dir" ]; then
-            cp "$dir"/* release-assets/ 2>/dev/null || true
-          fi
-        done
+        # Copy all executables to release-assets (find files recursively)
+        find artifacts -type f -name "qualtrics-util*" -exec cp {} release-assets/ \;
         
         # Create checksums for all files
         cd release-assets
