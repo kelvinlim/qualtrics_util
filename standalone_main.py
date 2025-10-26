@@ -12,6 +12,31 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'src'))
 from qualtrics_util import QualtricsDist, __version__
 
 version_history = """
+2.0.10 - added IANA timezone validation for project:TIMEZONE and embedded_data:TimeZone
+         with error messages including file name and line number
+2.0.9 - fix bug to determine sms vs. email from config for calling
+        either get_distribution_sms or get_distribution_email
+2.0.8 - implemnted the delete_unset for email distributions
+2.0.7 - fixed bug in conversion of StartDate to a datetime.date object by yaml, which
+        prevented it from being converted to json again.
+2.0.6 - cleaned up the email vs. sms selection, only need the following 
+        embedded fields:
+        
+        ContactMethod
+        SurveysScheduled
+        StartDate
+        NumDays
+        TimeSlots
+        TimeZone
+        ExpireMinutes
+        DeleteUnsent
+        LogData
+
+2.0.5  - enhance the help
+2.0.4  - fixed bug contact['embeddedData'].get('UseSMS','0')
+2.0.3  - added support for using timeZone in embeded data
+2.0.2  - added random text to email message text to prevent duplicate message error
+2.0.1  - First of version 2
 0.8.23 - in check_send, check for numDays > 0
 0.8.22 - for cmd slist, added surveys sent, start date and method
 0.8.21 - increased number of characters in sms random text from 1 to 8
