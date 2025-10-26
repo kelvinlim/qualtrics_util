@@ -71,7 +71,7 @@ jobs:
   release:
     needs: build
     runs-on: ubuntu-latest
-    if: startsWith(github.ref, 'refs/tags/')
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')
 
     steps:
     - name: Download all artifacts
@@ -81,10 +81,17 @@ jobs:
 
     - name: Prepare release assets
       run: |
+        echo "Looking for artifacts..."
+        find artifacts -type f || true
+        ls -la artifacts/ || true
+        
         mkdir -p release-assets
         
         # Copy all executables to release-assets (find files recursively)
         find artifacts -type f -name "qualtrics-util*" -exec cp {} release-assets/ \;
+        
+        echo "Files in release-assets:"
+        ls -lh release-assets/ || true
         
         # Create checksums for all files
         cd release-assets

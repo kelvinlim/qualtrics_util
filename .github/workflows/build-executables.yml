@@ -95,20 +95,23 @@ jobs:
 
     - name: Prepare release assets
       run: |
+        echo "Looking for artifacts..."
+        find artifacts -type f || true
+        ls -la artifacts/ || true
+        
         mkdir -p release-assets
         
         # Copy all executables to release-assets
-        find artifacts -name "qualtrics-util*" -exec cp {} release-assets/ \;
+        find artifacts -type f -name "qualtrics-util*" -exec cp {} release-assets/ \;
+        
+        echo "Files in release-assets:"
+        ls -lh release-assets/ || true
         
         # Create checksums for all files
         cd release-assets
         for file in *; do
           if [[ ! "$file" =~ \.sha256$ ]]; then
-            if [[ "$OSTYPE" == "linux-gnu"* ]] || [[ "$OSTYPE" == "darwin"* ]]; then
-              shasum -a 256 "$file" > "$file.sha256"
-            else
-              certutil -hashfile "$file" SHA256 > "$file.sha256"
-            fi
+            shasum -a 256 "$file" > "$file.sha256"
           fi
         done
         
