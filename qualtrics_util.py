@@ -220,26 +220,34 @@ class QualtricsDist:
             
             with open(actual_path, 'r') as fp:
             #try:
+                file_lines = fp.readlines()
+                fp.seek(0)  # Reset file pointer
                 self.cfg = yaml.safe_load(fp)
+                
+                # Store file info for error reporting
+                self._config_file_path = actual_path
+                self._config_file_lines = file_lines
+                
                 # if StartDate is datetime.date, then convert to a string like 2025-03-03
                 if isinstance(self.cfg['embedded_data']['StartDate'], date):
                     self.cfg['embedded_data']['StartDate'] = self.cfg['embedded_data']['StartDate'].strftime("%Y-%m-%d")
                 
-                # Validate timezones
-                self._validate_timezone(self.cfg.get('project', {}).get('TIMEZONE'), 'project:TIMEZONE')
-                self._validate_timezone(self.cfg.get('embedded_data', {}).get('TimeZone'), 'embedded_data:TimeZone')
+                # Validate timezones with file context
+                self._validate_timezone(self.cfg.get('project', {}).get('TIMEZONE'), 'project:TIMEZONE', 'TIMEZONE')
+                self._validate_timezone(self.cfg.get('embedded_data', {}).get('TimeZone'), 'embedded_data:TimeZone', 'TimeZone')
         except Exception as e:
             print(f"Error: {e}")
             sys.exit('Exiting program')
         pass
     
-    def _validate_timezone(self, timezone_str, field_name):
+    def _validate_timezone(self, timezone_str, field_name, key_name):
         """
         Validate that a timezone string is a valid IANA timezone.
         
         Args:
             timezone_str: The timezone string to validate
             field_name: The field name for error reporting
+            key_name: The key name to search for in the config file
         
         Raises:
             ValueError: If timezone is invalid
@@ -251,12 +259,27 @@ class QualtricsDist:
             # Try to create a ZoneInfo object with the timezone string
             ZoneInfo(timezone_str)
         except (ValueError, Exception) as e:
+            # Find the line number in the config file
+            line_num = self._find_line_number(key_name)
+            file_info = f" in {self._config_file_path}" if hasattr(self, '_config_file_path') else ""
+            line_info = f" on line {line_num}" if line_num > 0 else ""
+            
             # Catch both ValueError and ZoneInfoNotFoundError
             raise ValueError(
-                f"Invalid timezone '{timezone_str}' in {field_name}. "
+                f"Invalid timezone '{timezone_str}' in {field_name}{line_info}{file_info}. "
                 f"It must be a valid IANA timezone name (e.g., 'America/New_York', 'Europe/London'). "
                 f"Error: {e}"
             )
+    
+    def _find_line_number(self, key_name):
+        """Find the line number of a key in the config file."""
+        if not hasattr(self, '_config_file_lines'):
+            return 0
+        
+        for i, line in enumerate(self._config_file_lines, start=1):
+            if key_name in line:
+                return i
+        return 0
     
     def _find_config_file(self, config_file):
         """Find config file in multiple locations for backward compatibility."""
