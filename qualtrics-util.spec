@@ -11,6 +11,9 @@ Usage:
 
 import os
 
+# PyInstaller imports
+from PyInstaller.utils.hooks import collect_all, collect_submodules
+
 block_cipher = None
 
 # Determine the entry point
@@ -22,79 +25,22 @@ a = Analysis(
         ('config', 'config'),  # Include config directory
     ],
     hiddenimports=[
+        # Collect all pandas submodules
+        *collect_submodules('pandas'),
+        
+        # Collect all numpy submodules
+        *collect_submodules('numpy'),
+        
         # Core dependencies
         'requests',
         'yaml',
         'python-dotenv',
         'dotenv',
-        
-        # Pandas and all submodules
-        'pandas',
-        'pandas._libs',
-        'pandas._libs.tslibs',
-        'pandas._libs.tslibs.timedeltas',
-        'pandas._libs.tslibs.nattype',
-        'pandas._libs.tslibs.np_datetime',
-        'pandas._libs.tslibs.np_datetime',
-        'pandas._libs.writers',
-        'pandas.io',
-        'pandas.io.formats',
-        'pandas.io.formats.style',
-        
-        # Numpy and all submodules
-        'numpy',
-        'numpy._core',
-        'numpy.core',
-        'numpy.core._methods',
-        'numpy.core._multiarray_umath',
-        'numpy.core.multiarray',
-        'numpy.core.memmap',
-        'numpy.core.structured',
-        'numpy.core.ndarray',
-        'numpy.core.umath',
-        'numpy.lib',
-        'numpy.lib.format',
-        'numpy.lib.utils',
-        'numpy.lib.function_base',
-        'numpy.compat',
-        'numpy.compat.py3k',
-        
-        # Standard library
         'dateutil',
-        'zoneinfo',
-        'json',
-        'datetime',
-        'random',
-        'string',
-        'tempfile',
-        'zipfile',
-        'io',
-        'glob',
-        'shutil',
-        'textwrap',
-        'pprint',
-        'time',
-        'sys',
-        'argparse',
-        'urllib',
-        'urllib.request',
-        'urllib.parse',
         'certifi',
         'charset_normalizer',
         'idna',
-        'ssl',
-        'http',
-        'http.client',
     ],
-    hookspath=[],
-    hooksconfig={
-        'pandas': {
-            'collect_all': True,
-        },
-        'numpy': {
-            'collect_all': True,
-        },
-    },
     runtime_hooks=[],
     excludes=[
         'matplotlib',
