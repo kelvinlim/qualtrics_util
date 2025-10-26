@@ -1,0 +1,42 @@
+# account info
+account:
+  DATA_CENTER: ca1
+  DEFAULT_DIRECTORY: POOL_3fAZGWRVfLKuxe3
+  LIBRARY_ID: UR_9BRpiT23hddp6xE
+  
+  # default is True for ssl check
+  # set to False for VA
+  VERIFY: True
+
+# project info
+project:
+  SURVEY_ID: SV_3soc6p5nJW0hrcG
+  MESSAGE_ID: MS_097gBsNuMM0prK1
+  # mailing_list
+  MAILING_LIST_ID: CG_2tgjtOVoyVgWI30 
+  TIMEZONE: America/Chicago
+  # survey expiration time, default is 120 minutes
+  MINUTES_EXP: 120
+
+# default embedded data, set these from the qualtrics
+# web interface for a contact in a mailing list
+embedded_data:
+  StartDate: '2024-12-24'
+  # specify the SMS text times for 4 surveys
+  TimeSlots: 800,1600 
+  # specify the number of days to send surveys
+  NumDays: 42  
+  
+  # From the Embedded data for a contact
+  # set SurveysScheduled to 0 and UseSMS to 1 
+  # to enable scheduling invitations for the contact
+  SurveysScheduled: 0
+  UseSMS: 1
+  
+  # Set DeleteUnsent to 1 to enable deleting
+  # of unsent invitations
+  DeleteUnsent: 0
+
+  LogData: '[{"action":"init"}]'
+  TimeZone: America/Chicago  
+

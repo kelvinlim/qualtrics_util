@@ -1,0 +1,50 @@
+# account info
+account:
+  DATA_CENTER: ca1
+  DEFAULT_DIRECTORY: POOL_3fAZGWRVfLKuxe3
+  # Group library PrairieCare EMA Group
+  LIBRARY_ID: GR_86rA5UaPrYMjVum
+  VERIFY: True
+
+# project info
+project:
+  # Study 358
+  # survey id
+  SURVEY_ID: SV_9SjhPK8jFpippxc
+  # message_id for sms invite
+  MESSAGE_ID: MS_Voy1fpPWCfrhJVU
+  # message_id for email invite
+  MESSAGE_ID_EMAIL: MS_PswTs4B6sfPPLx4
+  # 358_mailing_list
+  MAILING_LIST_ID: CG_WdH3wRSSrjWaDSN
+  TIMEZONE: America/Chicago
+  MINUTES_EXPIRE: 60
+
+MAILING_LISTS:
+
+# default embedded data
+embedded_data:
+  # ContactMethod - options sms, email
+  ContactMethod: sms
+  # Internal counter of number of surveys scheduled
+  # Set this to 0 to schedule surveys
+  # When the program completes, it updates this value
+  SurveysScheduled: 0
+  # Start date of the survey
+  StartDate: 2025-02-28
+  # number of days to send surveys
+  NumDays: 1
+  # times during day to send surveys, use military time
+  TimeSlots: 800,1200,1600
+  # time zone
+  TimeZone: America/Chicago
+  # survey expiration time in minutes
+  ExpireMinutes: 60
+  # flag to delete unsent surveys, set to 1 to delete
+  # then use the delete command
+  DeleteUnsent: 0
+  # bookkeeping log data of operations
+  LogData: '[{"action":"init"}]'
+
+# End of file
+ 

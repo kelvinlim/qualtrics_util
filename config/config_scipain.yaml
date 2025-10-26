@@ -1,0 +1,47 @@
+# account info
+account:
+  DATA_CENTER: yul1
+  DEFAULT_DIRECTORY: POOL_3fAZGWRVfLKuxe3
+  LIBRARY_ID: GR_3soduJLIreGTOPY
+  #  UR_9XfPoJJe5LIUdVz
+
+# project info
+project:
+  # spinal cord injury
+  SURVEY_ID: SV_eEgMZXQwfHosvIy
+  MESSAGE_ID: MS_UdqSA78BZC73Gju
+  # covidema_dist_support
+  #MAILING_LIST_ID: CG_3phdg4O3eUKWWSa
+  # CG_2XpNxso87o1O548 covid ema 2023023
+ 
+  #SCI Mailing List
+  MAILING_LIST_ID: CG_1ruDik58FQjudpH
+
+
+  # mailing_list_name,
+  # category_name
+  MAILING_LIST_NAME: SCI Mailing List
+  CATEGORY_NAME: SCI Mailing List
+
+  DEFAULT_TIMES: 800,1100,1400,1700
+
+  MESSAGE_NAME: sms_invite
+
+  TIMEZONE: America/Chicago
+  MINUTES_EXPIRE: 60
+
+MAILING_LISTS:
+  cLBP Mailing List
+
+# default embedded data
+embedded_data:
+  StartDate: '2023-10-30'
+  SurveysScheduled: 0
+  TimeSlots: 800,1200,1600,2000
+  UseSMS: 0
+  DeleteUnsent: 0
+  NumDays: 0
+  LogData: '[{"action":"init"}]'
+  TimeZone: America/Chicago
+  #SurveyList: {"am":"SelfHarmEMA", "pm":"AwesomeSurvey_1"}
+ 

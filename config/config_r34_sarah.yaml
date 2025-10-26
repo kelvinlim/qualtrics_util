@@ -1,0 +1,46 @@
+# account info
+account:
+  DATA_CENTER: ca1
+  DEFAULT_DIRECTORY: POOL_3fAZGWRVfLKuxe3
+  LIBRARY_ID: GR_eRwfaL8bcG2pimO
+  
+  # default is True for ssl check
+  # set to False for VA
+  VERIFY: True
+
+# project info
+project:
+  
+  SURVEY_ID: SV_0eMGhLMrBOKjE8e   # R34 EMA spinal cord inury
+  #SURVEY_ID: SV_eWMaS9IxKvb3Apg   # R34 Daily pain management survey
+  MESSAGE_ID: MS_LBn7m0FtDgcccnN   # SMS invite
+  # mailing_list
+
+  MAILING_LIST_ID: CG_2xFNVpR5Ac3MBas  # R34_EMA-survey
+  # MAILING_LIST_ID: CG_2X5wnbIfjoaCagc  # R34_pain-management-survey
+  TIMEZONE: America/Chicago
+  # survey expiration time, default is 60 minutes
+  MINUTES_EXP: 120
+
+# default embedded data, set these from the qualtrics
+# web interface for a contact in a mailing list
+embedded_data:
+  StartDate: '2024-08-20'
+  # specify the SMS text times for 4 surveys
+  TimeSlots: 1130,1200,1600,2000
+  # specify the number of days to send surveys
+  NumDays: 1  
+  
+  # From the Embedded data for a contact
+  # set SurveysScheduled to 0 and UseSMS to 1 
+  # to enable scheduling invitations for the contact
+  SurveysScheduled: 0
+  UseSMS: 1
+  
+  # Set DeleteUnsent to 1 to enable deleting
+  # of unsent invitations
+  DeleteUnsent: 0
+
+  LogData: '[{"action":"init"}]'
+  TimeZone: America/Chicago  
+

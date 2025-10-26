@@ -1,0 +1,28 @@
+#! /bin/bash
+
+# script to do the crontab processing of scheduling qualtrics distributions
+
+DIR=/home/kolim/Projects/qualtrics_cron
+
+LOGFILE="${DIR}/logs"
+BIN=/home/kolim/bin
+# qualtrics_util -V
+echo "### Start ###" >> $LOGFILE
+date >> $LOGFILE
+
+CONFIG_FILES=("config_covidema.yaml")
+
+for config_file in "${CONFIG_FILES[@]}"; do
+    # run the qualtrics send and delete for each file
+    echo $config_file send | tee -a $LOGFILE
+    $BIN/qualtrics_util -V >> $LOGFILE
+
+    # do send
+    $BIN/qualtrics_util --config $DIR/$config_file --token $DIR/qualtrics_token --cmd send --verbose 1  >> $LOGFILE
+
+    # do delete
+    $BIN/qualtrics_util --config $DIR/$config_file --token $DIR/qualtrics_token --cmd delete --verbose 1  >> $LOGFILE
+
+done
+
+echo "### End ###" >> $LOGFILE

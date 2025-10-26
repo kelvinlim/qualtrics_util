@@ -1,0 +1,343 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "qualtrics_util export",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "qualtrics_util.py",
+            "console": "integratedTerminal",
+            "args": [
+                "--config",
+                "config_ped_obesity.yaml",
+                "--cmd",
+                "export",
+                "--format",
+                "csv"
+            ]
+        },
+        {
+            "name": "qualtrics_util list",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "qualtrics_util.py",
+            "console": "integratedTerminal",
+            "args": [
+                "--config",
+                "config_study358.yaml",
+                "--cmd",
+                "list",
+                "--verbose",
+                "3"
+            ]
+        },
+        {
+            "name": "qualtrics_util send",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "qualtrics_util.py",
+            "console": "integratedTerminal",
+            "args": [
+                "--config",
+                "config_study358.yaml",
+                "--cmd",
+                "send",
+                "--verbose",
+                "3"
+            ]
+        },
+        {
+            "name": "qualtrics_util covid slist",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "qualtrics_util.py",
+            "console": "integratedTerminal",
+            "args": [
+                "--config",
+                "config_covidema.yaml",
+                "--cmd",
+                "slist",
+                "--verbose",
+                "1",
+                "--index",
+                "-1"
+            ]
+        },
+        {
+            "name": "qualtrics_util delete covid",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "qualtrics_util.py",
+            "console": "integratedTerminal",
+            "args": [
+                "--config",
+                "config_covidema.yaml",
+                "--cmd",
+                "delete",
+                "--verbose",
+                "3",
+                "--index",
+                "-1"
+            ]
+        },
+        {
+            "name": "qualtrics_util delete cpom_gross",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "qualtrics_util.py",
+            "console": "integratedTerminal",
+            "args": [
+                "--config",
+                "config_cpom_gross.yaml",
+                "--cmd",
+                "delete",
+                "--verbose",
+                "3",
+                "--index",
+                "11"
+            ]
+        },
+ 
+        {
+            "name": "qualtrics_util delete r34 stimac",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "qualtrics_util.py",
+            "console": "integratedTerminal",
+            "args": [
+                "--config",
+                "config_r34_stimac.yaml",
+                "--cmd",
+                "delete",
+                "--verbose",
+                "3",
+                // "--index",
+                // "2"
+            ]
+        },
+        {
+            "name": "qualtrics_util delete study 358",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "qualtrics_util.py",
+            "console": "integratedTerminal",
+            "args": [
+                "--config",
+                "config_study358.yaml",
+                "--cmd",
+                "delete",
+                "--verbose",
+                "3",
+                // "--index",
+                // "2"
+            ]
+        },
+        {
+            "name": "qualtrics_util send smartmind",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "qualtrics_util.py",
+            "console": "integratedTerminal",
+            "args": [
+                "--config",
+                "config_smartmind_email.yaml",
+                "--cmd",
+                "send",
+                "--verbose",
+                "3",
+
+            ]
+        },
+        {
+            "name": "qualtrics_util send covid",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "qualtrics_util.py",
+            "console": "integratedTerminal",
+            "args": [
+                "--config",
+                "config_covidema.yaml",
+                "--cmd",
+                "send",
+                "--verbose",
+                "1",
+                "--index",
+                "-1"
+            ]
+        },
+        {
+            "name": "qualtrics_utilv2 send covid",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "qualtrics_util.py",
+            "console": "integratedTerminal",
+            "args": [
+                "--config",
+                "config_covidemav2.yaml",
+                "--cmd",
+                "send",
+                "--verbose",
+                "3",
+                "--index",
+                "-1"
+            ]
+        },
+        {
+            "name": "qualtrics_mutil work",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "qualtrics_mutil.py",
+            "console": "integratedTerminal",
+            "args": [
+                "--config",
+                "mconfig_covid.yaml",
+                "--cmd",
+                "work",
+                "--verbose",
+                "3"
+            ]
+        },
+
+        {
+            "name": "qualtrics_util delete covid",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "qualtrics_util.py",
+            "console": "integratedTerminal",
+            "args": [
+                "--config",
+                "config_covidema.yaml",
+                "--cmd",
+                "delete",
+                "--verbose",
+                "3",
+                "--index",
+                "-1"
+            ]
+        },
+        {
+            "name": "qualtrics_util delete r34 backpain",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "qualtrics_util.py",
+            "console": "integratedTerminal",
+            "args": [
+                "--config",
+                "config_qualtrics_hinck.yaml",
+                "--cmd",
+                "delete",
+                "--verbose",
+                "3",
+                "--index",
+                "2"
+            ]
+        },
+
+        {
+            "name": "qualtrics_util check r34 ema spinal cord",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "qualtrics_util.py",
+            "console": "integratedTerminal",
+            "args": [
+                "--config",
+                "config_r34_sarah.yaml",
+                "--cmd",
+                "check",
+                "--verbose",
+                "3",
+                // "--index",
+                // "2"
+            ]
+        },
+        {
+            "name": "qualtrics_util delete r34 ema spinal cord",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "qualtrics_util.py",
+            "console": "integratedTerminal",
+            "args": [
+                "--config",
+                "config_r34_sarah.yaml",
+                "--cmd",
+                "delete",
+                "--verbose",
+                "3",
+                // "--index",
+                // "2"
+            ]
+        },
+        {
+            "name": "qualtrics_util send covid",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "qualtrics_util.py",
+            "console": "integratedTerminal",
+            "args": [
+                "--config",
+                "config_covidema.yaml",
+                "--cmd",
+                "send",
+                "--verbose",
+                "1",
+                "--index",
+                "-1"
+            ]
+        },
+        {
+            "name": "qualtrics_utilv2 send covid",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "qualtrics_util.py",
+            "console": "integratedTerminal",
+            "args": [
+                "--config",
+                "config_covidemav2.yaml",
+                "--cmd",
+                "send",
+                "--verbose",
+                "3",
+                "--index",
+                "-1"
+            ]
+        },
+        {
+            "name": "qualtrics_mutil work",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "qualtrics_mutil.py",
+            "console": "integratedTerminal",
+            "args": [
+                "--config",
+                "mconfig_covid.yaml",
+                "--cmd",
+                "work",
+                "--verbose",
+                "3"
+            ]
+        },
+        {
+            "name": "send_sms_email sms",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "send_sms_email.py",
+            "console": "integratedTerminal",
+            "args": [
+                "sms",
+            ]
+        },
+        {
+            "name": "send_sms_email email",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "send_sms_email.py",
+            "console": "integratedTerminal",
+            "args": [
+                "email",
+            ]
+        }
+    ]
+}

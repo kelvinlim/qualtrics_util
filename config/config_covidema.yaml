@@ -1,0 +1,46 @@
+# account info
+account:
+  DATA_CENTER: yul1
+  DEFAULT_DIRECTORY: POOL_3fAZGWRVfLKuxe3
+
+
+  # Group Library: Long Covid EMA	GR_cCk7JYSBpnnz6Rg
+  LIBRARY_ID: GR_cCk7JYSBpnnz6Rg
+  # MyLibrary Kelvin Lim
+  # LIBRARY_ID: UR_9XfPoJJe5LIUdVz
+  VERIFY: True
+
+# project info
+project:
+  # Regular covid ema survey
+  SURVEY_ID: SV_8eMxLSXymY6lW6y
+
+  # message_id for sms invite
+  MESSAGE_ID: MS_EAVqkSEWDyF2kKf
+
+  # Regular COVID EMA email
+  # message_id for email invite
+  MESSAGE_ID_EMAIL: MS_EERJLNg8Pns2kHq
+  
+  MAILING_LIST_ID: CG_PRpB8GXFYH7nXQB
+  TIMEZONE: America/Chicago
+  MINUTES_EXPIRE: 60
+
+MAILING_LISTS:
+
+# default embedded data
+embedded_data:
+  #ContactMethod: sms
+  # NumDays: 0
+  StartDate: '2024-09-22'
+  #Time1: 800
+  #Time2: 1200
+  #Time3: 1600
+  #Time4: 2000
+  TimeZone: America/Chicago
+  DeleteUnsent: 0
+  SurveysScheduled: 0
+
+
+  #SurveyList: {"am":"SelfHarmEMA", "pm":"AwesomeSurvey_1"}
+ 

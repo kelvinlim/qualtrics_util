@@ -1,0 +1,44 @@
+# account info
+account:
+  DATA_CENTER: yul1
+  DEFAULT_DIRECTORY: POOL_3fAZGWRVfLKuxe3
+  LIBRARY_ID: UR_9XfPoJJe5LIUdVz
+  VERIFY: True
+  #  UR_9XfPoJJe5LIUdVz
+
+# project info
+project:
+  # Study 314 ema
+  SURVEY_ID: SV_3lU3J42sDkal7RI
+  MESSAGE_ID: MS_jSOlniMBX5VDfPn
+  #SCI Mailing List
+  MAILING_LIST_ID: CG_3J3IwecoIlffdbm
+
+
+  # mailing_list_name,
+  # category_name
+  MAILING_LIST_NAME: Study314_mailing_list
+  CATEGORY_NAME: SCI Mailing List
+
+  DEFAULT_TIMES: 800,1100,1400,1700
+
+  MESSAGE_NAME: sms_invite
+
+  TIMEZONE: America/Chicago
+  MINUTES_EXPIRE: 60
+
+MAILING_LISTS:
+  cLBP Mailing List
+
+# default embedded data
+embedded_data:
+  StartDate: '2023-11-09'
+  SurveysScheduled: 0
+  TimeSlots: 800,1200,1600,2000
+  UseSMS: 0
+  DeleteUnsent: 0
+  NumDays: 0
+  LogData: '[{"action":"init"}]'
+  TimeZone: America/Chicago
+  #SurveyList: {"am":"SelfHarmEMA", "pm":"AwesomeSurvey_1"}
+ 

@@ -1,0 +1,9 @@
+.venv/
+qualtrics_token
+build/
+dist/
+qualtrics_util.spec
+venv/
+__pycache__/
+.DS_Store
+

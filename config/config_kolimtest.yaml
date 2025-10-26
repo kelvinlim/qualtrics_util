@@ -1,0 +1,63 @@
+# account info
+account:
+  DATA_CENTER: ca1
+  DEFAULT_DIRECTORY: POOL_3fAZGWRVfLKuxe3
+  LIBRARY_ID: UR_9XfPoJJe5LIUdVz
+  VERIFY: True
+
+# project info
+project:
+  
+  # Surveys
+  SURVEY_ID: SV_430r2OHphUatmzs
+
+  MESSAGE_ID: MS_jSOlniMBX5VDfPn
+
+  # Contact List
+  MAILING_LIST_ID: CG_12oqD8nH1kWpWKM 
+  # Survey expiration in minutes
+  MINUTES_EXP: 30
+
+
+# default embedded data
+embedded_data:
+  StartDate: '2024-04-22'
+  SurveysScheduled: 0
+  TimeSlots: 2120
+  UseSMS: 0
+  DeleteUnsent: 0
+  NumDays: 0
+  LogData: '[{"action":"init"}]'
+  TimeZone: America/Chicago
+  Test1__Field1: 0
+  Test1__Field2: 0
+  Test1__Field3: 0
+  Test1__Field4: 0
+  Test1__Field5: 0
+  Test1__Field6: 0
+  Test1__Field7: 0
+  Test1__Field8: 0
+  Test1__Field9: 0
+  Test1__Field10: 0
+  Test2__Field1: 0
+  Test2__Field2: 0
+  Test2__Field3: 0
+  Test2__Field4: 0
+  Test2__Field5: 0
+  Test2__Field6: 0
+  Test2__Field7: 0
+  Test2__Field8: 0
+  Test2__Field9: 0
+  Test2__Field10: 0
+  Test3__Field1: 0
+  Test3__Field2: 0
+  Test3__Field3: 0
+  Test3__Field4: 0
+  Test3__Field5: 0
+  Test3__Field6: 0
+  Test3__Field7: 0
+  Test3__Field8: 0
+  Test3__Field9: 0
+  Test3__Field10: 0
+
+

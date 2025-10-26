@@ -1,0 +1,47 @@
+# account info
+account:
+  DATA_CENTER: yul1
+  DEFAULT_DIRECTORY: POOL_3fAZGWRVfLKuxe3
+  LIBRARY_ID: UR_9XfPoJJe5LIUdVz
+
+# project info
+project:
+  # Long COVID EMA survey
+  SURVEY_ID: SV_8eMxLSXymY6lW6y
+  MESSAGE_ID: MS_HBhLVB5HebyavdA
+  # covidema_dist_support
+  #MAILING_LIST_ID: CG_3phdg4O3eUKWWSa
+  # CG_2XpNxso87o1O548 covid ema 2023023
+  MAILING_LIST_ID: CG_2XpNxso87o1O548 
+
+  # covidema_dist_support
+  MAILING_LIST_ID: CG_3phdg4O3eUKWWSa
+
+  # mailing_list_name,
+  # category_name
+  MAILING_LIST_NAME: covid ema
+  CATEGORY_NAME: covid mailing list
+
+  DEFAULT_TIMES: 800,1200,1600,2000
+
+  MESSAGE_NAME: Survey
+
+  TIMEZONE: America/Chicago
+  MINUTES_EXPIRE: 60
+
+MAILING_LISTS:
+  covidema_dist_support
+  cLBP Mailing List
+
+# default embedded data
+embedded_data:
+  StartDate: '2023-10-30'
+  SurveysScheduled: 0
+  TimeSlots: 800,1200,1600,2000
+  UseSMS: 0
+  DeleteUnsent: 0
+  NumDays: 0
+  LogData: '[{"action":"init"}]'
+  TimeZone: America/Chicago
+  SurveyList: {"am":"SelfHarmEMA", "pm":"AwesomeSurvey_1"}
+ 

@@ -1,0 +1,31 @@
+# account info
+account:
+  DATA_CENTER: ca1
+  DEFAULT_DIRECTORY: POOL_3fAZGWRVfLKuxe3
+  LIBRARY_ID: GR_donOXG2hePbr9jw
+  VERIFY: True
+
+# project info
+project:
+  # Study 
+  SURVEY_ID: SV_4Z3KHPqGya0VZwG
+  MESSAGE_ID: MS_KAUe9CaB0QgHfFx
+  # mailing_list
+  MAILING_LIST_ID: CG_Uy8VpbLFbOxi1Jn
+
+  TIMEZONE: America/Chicago
+  MINUTES_EXPIRE: 60
+
+MAILING_LISTS:
+
+# default embedded data
+embedded_data:
+  StartDate: '2024-04-01'
+  SurveysScheduled: 0
+  TimeSlots: 800,1200,1600,2000
+  UseSMS: 0
+  DeleteUnsent: 0
+  NumDays: 0
+  LogData: '[{"action":"init"}]'
+  TimeZone: America/Chicago
+ 

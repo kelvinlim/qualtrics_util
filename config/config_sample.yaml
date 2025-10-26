@@ -1,0 +1,32 @@
+version: 0.1
+
+# account info
+account:
+  DATA_CENTER: ca1
+  DEFAULT_DIRECTORY: POOL_
+  LIBRARY_ID: UR_
+  VERIFY: True
+
+# project info
+project:
+  # survey id
+  SURVEY_ID: SV_
+  # message id
+  MESSAGE_ID: MS_
+  # mailing list id
+  MAILING_LIST_ID: CG_ 
+
+  MINUTES_EXPIRE: 60
+
+# default embedded data
+embedded_data:
+  StartDate: '2023-10-28'
+  SurveysScheduled: 0
+  TimeSlots: 800,1200,1600,2000
+  UseSMS: 0
+  DeleteUnsent: 0
+  NumDays: 0
+  LogData: '[{"action":"init"}]'
+  TimeZone: America/Chicago
+  Surveys: SV_
+ 

@@ -1,0 +1,28 @@
+# account info
+account:
+  DATA_CENTER: gov1
+  DEFAULT_DIRECTORY: POOL_1zehdSNDM6AxO0l
+  LIBRARY_ID: 
+
+# project info
+project:
+  # Long COVID EMA survey
+  
+  # Surveys
+  # morning_test	SV_7UNLDhKr3hXzsto
+  SURVEY_ID: SV_7UNLDhKr3hXzsto
+  MESSAGE_ID:
+
+  # New Contact List (7/9/23 8:30 AM)	CG_3GuZvCku79GAJ74
+  MAILING_LIST_ID: CG_3GuZvCku79GAJ74 
+
+  # mailing_list_name,
+  # category_name
+  MAILING_LIST_NAME: covid ema
+  CATEGORY_NAME: covid mailing list
+
+  DEFAULT_TIMES: 800,1200,1600,2000
+
+  MESSAGE_NAME: Survey
+
+

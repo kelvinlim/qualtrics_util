@@ -1,0 +1,65 @@
+# account info
+account:
+  DATA_CENTER: yul1
+  DEFAULT_DIRECTORY: POOL_3fAZGWRVfLKuxe3
+
+  VERIFY: True   # Default True for requests SSL verify
+
+# project info
+project:
+  NAME: Long_COVID_EMA
+  MAILING_LIST_ID: CG_2XpNxso87o1O548  
+  LIBRARY_ID: GR_cCk7JYSBpnnz6Rg
+  ExpireMinutes: 60
+  TIMEZONE: 'America/Chicago'
+
+# define each of the steps
+steps:
+  consent:
+    survey: SV_8iigy1iCkAhAFSe
+    #condition: "(df['UBACC_:pass'] == 1) & df['email_address'].notna()"
+    #condition: "(UBACC_:pass == 1) & email_address.notna()"
+    addvars:
+      UBACC_pass: 0
+      QID1715333792_TEXT: None   # email address
+    condition: "if d['UBACC_pass'] == '1' and d['QID1715333792_TEXT']"
+    # email is "QID1715333792_TEXT
+    match: email_address
+    message_id: False
+    consent_id:
+    survey_2: SV_esLIJSi7IzAhkgK
+    match_2: RecipientEmail
+    actions: [ load, filter:condition ]
+    nextstep: confirmation
+    EmbeddedData:
+      Status: 0
+      dateCompleted:
+      dateNextSent:
+      
+
+  confirmation:
+    survey: SV_esLIJSi7IzAhkgK
+    vars:
+      survey_id: 
+      message_id:
+      confirm_id:
+    EmbeddedData:
+      Status: 0
+      date_completed:
+
+  baseline:
+    survey: SV_cUO0RLd0RqXMX8G
+    vars:
+      date_completed:
+      confirm_id:
+    EmbeddedData:
+      Status: 0
+
+
+  ema:
+    survey: SV_8eMxLSXymY6lW6y
+    vars:
+      date_completed:
+      confirm_id:
+    EmbeddedData:
+      Status: 0
