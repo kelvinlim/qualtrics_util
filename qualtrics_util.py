@@ -224,10 +224,39 @@ class QualtricsDist:
                 # if StartDate is datetime.date, then convert to a string like 2025-03-03
                 if isinstance(self.cfg['embedded_data']['StartDate'], date):
                     self.cfg['embedded_data']['StartDate'] = self.cfg['embedded_data']['StartDate'].strftime("%Y-%m-%d")
+                
+                # Validate timezones
+                self._validate_timezone(self.cfg.get('project', {}).get('TIMEZONE'), 'project:TIMEZONE')
+                self._validate_timezone(self.cfg.get('embedded_data', {}).get('TimeZone'), 'embedded_data:TimeZone')
         except Exception as e:
             print(f"Error: {e}")
             sys.exit('Exiting program')
         pass
+    
+    def _validate_timezone(self, timezone_str, field_name):
+        """
+        Validate that a timezone string is a valid IANA timezone.
+        
+        Args:
+            timezone_str: The timezone string to validate
+            field_name: The field name for error reporting
+        
+        Raises:
+            ValueError: If timezone is invalid
+        """
+        if timezone_str is None:
+            return  # Skip validation if timezone is not specified
+        
+        try:
+            # Try to create a ZoneInfo object with the timezone string
+            ZoneInfo(timezone_str)
+        except (ValueError, Exception) as e:
+            # Catch both ValueError and ZoneInfoNotFoundError
+            raise ValueError(
+                f"Invalid timezone '{timezone_str}' in {field_name}. "
+                f"It must be a valid IANA timezone name (e.g., 'America/New_York', 'Europe/London'). "
+                f"Error: {e}"
+            )
     
     def _find_config_file(self, config_file):
         """Find config file in multiple locations for backward compatibility."""
