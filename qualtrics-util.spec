@@ -40,16 +40,6 @@ a = Analysis(
         'certifi',
         'charset_normalizer',
         'idna',
-        
-        # Refactored module imports
-        'qualtrics_util',
-        'qualtrics_util.cli',
-        'qualtrics_util.config',
-        'qualtrics_util.api',
-        'qualtrics_util.api.contacts',
-        'qualtrics_util.api.distributions',
-        'qualtrics_util.api.messages',
-        'qualtrics_util.api.surveys',
     ],
     runtime_hooks=[],
     excludes=[
