@@ -19,7 +19,7 @@ block_cipher = None
 # Determine the entry point
 a = Analysis(
     ['standalone_main.py'],  # Use standalone entry point that handles imports correctly
-    pathex=['src'],  # Add src directory to path
+    pathex=[],
     binaries=[],
     datas=[
         ('config', 'config'),  # Include config directory

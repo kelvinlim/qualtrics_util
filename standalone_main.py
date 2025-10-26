@@ -3,21 +3,10 @@
 
 import os
 import sys
+import argparse
 
-# Determine if we're running as frozen executable or from source
-if getattr(sys, 'frozen', False):
-    # Running as compiled executable - src/ should be in the bundle
-    # PyInstaller includes everything, so we can import directly
-    from qualtrics_util.cli import main as cli_main
-    from qualtrics_util import __version__
-else:
-    # Running from source - add src to path
-    src_path = os.path.join(os.path.dirname(__file__), 'src')
-    if src_path not in sys.path:
-        sys.path.insert(0, src_path)
-    
-    from qualtrics_util.cli import main as cli_main
-    from qualtrics_util import __version__
+# Import from the monolithic file (which has timezone validation)
+from qualtrics_util import QualtricsDist, __version__
 
 version_history = """
 2.0.10 - added IANA timezone validation for project:TIMEZONE and embedded_data:TimeZone
@@ -60,16 +49,98 @@ version_history = """
 
 def main():
     """Main CLI entry point."""
-    # Handle --history flag before calling CLI
-    if '-H' in sys.argv or '--history' in sys.argv:
-        # Find and remove history flags to let CLI handle the rest
-        sys.argv = [arg for arg in sys.argv if arg not in ['-H', '--history']]
+    parser = argparse.ArgumentParser(
+        description="""
+        Qualtrics utility tool for working with mailing lists.
+
+        A configuration file allows customization for different projects.
+
+        Sends out to individual via SMS or email
+        """
+    )
+
+    # Determine the default config file path
+    # For standalone executable, use config_qualtrics.yaml in the same directory as the executable
+    # For development, use the path relative to the project root
+    if getattr(sys, 'frozen', False):
+        # Running as compiled executable
+        exe_dir = os.path.dirname(sys.executable)
+        default_config = os.path.join(exe_dir, 'config_qualtrics.yaml')
+    else:
+        # Running from source
+        default_config = 'config/config_qualtrics.yaml'
+
+    parser.add_argument(
+        "--config",
+        type=str,
+        help="config file, default is config_qualtrics.yaml",
+        default=default_config
+    )
+
+    parser.add_argument(
+        "--cmd",
+        type=str,
+        help="cmd - check, delete, export, list, slist, send, update, default: list",
+        default='list'
+    )
+
+    parser.add_argument(
+        "--token",
+        type=str,
+        help="name of qualtrics token file - default qualtrics_token",
+        default="qualtrics_token"
+    )
+
+    parser.add_argument(
+        "--format",
+        type=str,
+        help="export output file format - default: json",
+        default="json"
+    )
+
+    parser.add_argument(
+        "--verbose",
+        type=int,
+        help="print diagnostic messages - 0 low, 3 high, default 1",
+        default=1
+    )
+
+    parser.add_argument(
+        "--index",
+        type=int,
+        help="index number for operations like delete",
+        default=-1
+    )
+
+    parser.add_argument(
+        '-V', '--version',
+        action='version',
+        version=f'%(prog)s {__version__}'
+    )
+
+    parser.add_argument(
+        "-H", "--history",
+        action="store_true",
+        help="Show program history"
+    )
+
+    args = parser.parse_args()
+
+    if args.history:
         print(f"qualtrics-util Version: {__version__}")
         print(version_history)
         return
-    
-    # Call the refactored CLI main function
-    cli_main()
+
+    # Create QualtricsDist instance
+    qd = QualtricsDist()
+    qd.initialize(
+        config_file=args.config,
+        env_file=args.token,
+        **vars(args)
+    )
+
+    # Execute command
+    qd.work(args.cmd)
 
 
 if __name__ == "__main__":
