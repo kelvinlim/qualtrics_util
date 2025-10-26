@@ -16,6 +16,9 @@ on:
           - macos
           - windows
 
+permissions:
+  contents: write
+
 jobs:
   build:
     strategy:
