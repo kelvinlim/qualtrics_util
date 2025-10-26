@@ -114,6 +114,7 @@ jobs:
             shasum -a 256 "$file" > "$file.sha256"
           fi
         done
+        cd ..
         
         # List what we have
         echo "Release assets prepared:"
