@@ -37,10 +37,12 @@ from requests.packages.urllib3.exceptions import InsecureRequestWarning
 
 
 
-__version_info__ = ('2', '0', '9')
+__version_info__ = ('2', '0', '10')
 __version__ = '.'.join(__version_info__)
 __version_history__ = \
 """
+2.0.10 - added IANA timezone validation for project:TIMEZONE and embedded_data:TimeZone
+         with error messages including file name and line number
 2.0.9 - fix bug to determine sms vs. email from config for calling
         either get_distribution_sms or get_distribution_email
 2.0.8 - implemnted the delete_unset for email distributions
