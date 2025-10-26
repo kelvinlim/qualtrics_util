@@ -78,7 +78,7 @@ def create_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         '-V', '--version',
         action='version',
-        version='%(prog)s 2.0.9'
+        version='%(prog)s 2.0.10'
     )
     
     parser.add_argument(
@@ -93,6 +93,8 @@ def create_parser() -> argparse.ArgumentParser:
 def print_version_history():
     """Print the version history."""
     history = """
+2.0.10 - added IANA timezone validation for project:TIMEZONE and embedded_data:TimeZone
+         with error messages including file name and line number
 2.0.9 - fix bug to determine sms vs. email from config for calling
         either get_distribution_sms or get_distribution_email
 2.0.8 - implemnted the delete_unset for email distributions
