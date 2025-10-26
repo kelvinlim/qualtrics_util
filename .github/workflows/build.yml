@@ -121,7 +121,7 @@ jobs:
           exit 1
         fi
         
-        cat > release-notes.md << 'EOT'
+        cat > release-notes.md << EOT
         # Qualtrics Util ${TAG_NAME}
         
         ## Downloads

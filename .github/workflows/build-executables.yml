@@ -135,7 +135,7 @@ jobs:
         TAG_NAME="${{ github.ref_name }}"
         REPO="${{ github.repository }}"
         
-        cat > release-notes.md << 'EOT'
+        cat > release-notes.md << EOT
         # Qualtrics Util ${TAG_NAME}
         
         ## Downloads
