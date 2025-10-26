@@ -15,7 +15,7 @@ block_cipher = None
 
 # Determine the entry point
 a = Analysis(
-    ['qualtrics_util.py'],  # Use the original entry point
+    ['standalone_main.py'],  # Use standalone entry point that handles imports correctly
     pathex=[],
     binaries=[],
     datas=[
@@ -25,7 +25,12 @@ a = Analysis(
         'requests',
         'yaml',
         'pandas',
+        'pandas._libs.tslibs.timedeltas',
+        'pandas._libs.tslibs.nattype',
+        'pandas._libs.tslibs.np_datetime',
+        'pandas._libs.writers',
         'python-dotenv',
+        'dotenv',
         'dateutil',
         'zoneinfo',
         'json',
@@ -43,13 +48,19 @@ a = Analysis(
         'sys',
         'argparse',
         'numpy',
+        'numpy._core',
         'numpy.core',
         'numpy.core._methods',
+        'numpy.core._multiarray_umath',
+        'numpy.core.multiarray',
+        'numpy.core.memmap',
+        'numpy.core.structured',
+        'numpy.core.ndarray',
+        'numpy.core.umath',
         'numpy.lib',
         'numpy.lib.format',
-        'pandas.io',
-        'pandas.io.formats',
-        'pandas.io.formats.style',
+        'numpy.compat',
+        'numpy.compat.py3k',
     ],
     hookspath=[],
     hooksconfig={},
