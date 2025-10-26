@@ -78,7 +78,7 @@ def create_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         '-V', '--version',
         action='version',
-        version='%(prog)s 2.0.10'
+        version='%(prog)s 2.0.11'
     )
     
     parser.add_argument(
@@ -93,6 +93,7 @@ def create_parser() -> argparse.ArgumentParser:
 def print_version_history():
     """Print the version history."""
     history = """
+2.0.11 - added datetime scheduling logic to modular src code
 2.0.10 - added IANA timezone validation for project:TIMEZONE and embedded_data:TimeZone
          with error messages including file name and line number
 2.0.9 - fix bug to determine sms vs. email from config for calling

@@ -9,6 +9,7 @@ import argparse
 from qualtrics_util import QualtricsDist, __version__
 
 version_history = """
+2.0.11 - added datetime scheduling logic to modular src code
 2.0.10 - added IANA timezone validation for project:TIMEZONE and embedded_data:TimeZone
          with error messages including file name and line number
 2.0.9 - fix bug to determine sms vs. email from config for calling
