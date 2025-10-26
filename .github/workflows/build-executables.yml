@@ -119,36 +119,47 @@ jobs:
         echo "Release assets prepared:"
         ls -lh release-assets/
 
+    - name: Check assets exist
+      run: |
+        if [ ! "$(ls -A release-assets/)" ]; then
+          echo "Error: No release assets found!"
+          exit 1
+        fi
+
+    - name: Create release notes
+      run: |
+        cat > release-notes.md << EOF
+# Qualtrics Util ${{ github.ref_name }}
+
+## Downloads
+
+### Executables (No Python Required)
+
+| Platform | Download | SHA256 |
+|----------|----------|--------|
+| Linux (AMD64) | [qualtrics-util-linux-amd64](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/qualtrics-util-linux-amd64) | [checksum](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/qualtrics-util-linux-amd64.sha256) |
+| macOS (Intel) | [qualtrics-util-macos-amd64](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/qualtrics-util-macos-amd64) | [checksum](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/qualtrics-util-macos-amd64.sha256) |
+| macOS (Apple Silicon) | [qualtrics-util-macos-arm64](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/qualtrics-util-macos-arm64) | [checksum](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/qualtrics-util-macos-arm64.sha256) |
+| Windows (AMD64) | [qualtrics-util-windows-amd64.exe](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/qualtrics-util-windows-amd64.exe) | [checksum](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/qualtrics-util-windows-amd64.exe.sha256) |
+
+## Usage
+
+Download the appropriate executable for your platform, make it executable (Linux/macOS), and run:
+
+\`\`\`bash
+./qualtrics-util --config config/config_qualtrics.yaml --cmd list
+\`\`\`
+
+See README.md for full documentation.
+EOF
+
     - name: Create Release
       uses: softprops/action-gh-release@v1
       with:
-        files: |
-          release-assets/*
+        files: release-assets/*
+        body_path: release-notes.md
         tag_name: ${{ github.ref_name }}
         name: Release ${{ github.ref_name }}
-        body: |
-          # Qualtrics Util ${{ github.ref_name }}
-          
-          ## Downloads
-          
-          ### Executables (No Python Required)
-          
-          | Platform | Download | SHA256 |
-          |----------|----------|--------|
-          | Linux (AMD64) | [qualtrics-util-linux-amd64](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/qualtrics-util-linux-amd64) | [checksum](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/qualtrics-util-linux-amd64.sha256) |
-          | macOS (Intel) | [qualtrics-util-macos-amd64](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/qualtrics-util-macos-amd64) | [checksum](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/qualtrics-util-macos-amd64.sha256) |
-          | macOS (Apple Silicon) | [qualtrics-util-macos-arm64](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/qualtrics-util-macos-arm64) | [checksum](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/qualtrics-util-macos-arm64.sha256) |
-          | Windows (AMD64) | [qualtrics-util-windows-amd64.exe](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/qualtrics-util-windows-amd64.exe) | [checksum](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/qualtrics-util-windows-amd64.exe.sha256) |
-          
-          ## Usage
-          
-          Download the appropriate executable for your platform, make it executable (Linux/macOS), and run:
-          
-          ```bash
-          ./qualtrics-util --config config/config_qualtrics.yaml --cmd list
-          ```
-          
-          See README.md for full documentation.
         draft: false
         prerelease: false
       env:
