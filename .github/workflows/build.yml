@@ -124,12 +124,11 @@ jobs:
 
 ### Executables (No Python Installation Required)
 
-| Platform | Download | SHA256 |
-|----------|----------|--------|
-| Linux (AMD64) | [qualtrics-util-linux-amd64](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/qualtrics-util-linux-amd64) | [checksum](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/qualtrics-util-linux-amd64.sha256) |
-| macOS (Intel) | [qualtrics-util-macos-amd64](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/qualtrics-util-macos-amd64) | [checksum](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/qualtrics-util-macos-amd64.sha256) |
-| macOS (Apple Silicon) | [qualtrics-util-macos-arm64](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/qualtrics-util-macos-arm64) | [checksum](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/qualtrics-util-macos-arm64.sha256) |
-| Windows (AMD64) | [qualtrics-util-windows-amd64.exe](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/qualtrics-util-windows-amd64.exe) | [checksum](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/qualtrics-util-windows-amd64.exe.sha256) |
+Download the appropriate executable for your platform:
+- Linux (AMD64): [qualtrics-util-linux-amd64](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/qualtrics-util-linux-amd64) ([checksum](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/qualtrics-util-linux-amd64.sha256))
+- macOS (Intel): [qualtrics-util-macos-amd64](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/qualtrics-util-macos-amd64) ([checksum](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/qualtrics-util-macos-amd64.sha256))
+- macOS (Apple Silicon): [qualtrics-util-macos-arm64](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/qualtrics-util-macos-arm64) ([checksum](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/qualtrics-util-macos-arm64.sha256))
+- Windows (AMD64): [qualtrics-util-windows-amd64.exe](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/qualtrics-util-windows-amd64.exe) ([checksum](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/qualtrics-util-windows-amd64.exe.sha256))
 
 ## Installation
 
