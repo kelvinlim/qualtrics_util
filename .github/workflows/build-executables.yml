@@ -128,29 +128,32 @@ jobs:
 
     - name: Create release notes
       run: |
-        cat > release-notes.md <<'ENDOFFILE'
-# Qualtrics Util ${{ github.ref_name }}
+        TAG_NAME="${{ github.ref_name }}"
+        REPO="${{ github.repository }}"
+        
+        cat > release-notes.md << NOTES
+# Qualtrics Util ${TAG_NAME}
 
 ## Downloads
 
 ### Executables (No Python Required)
 
 Download the appropriate executable for your platform:
-- Linux (AMD64): [qualtrics-util-linux-amd64](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/qualtrics-util-linux-amd64) ([checksum](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/qualtrics-util-linux-amd64.sha256))
-- macOS (Intel): [qualtrics-util-macos-amd64](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/qualtrics-util-macos-amd64) ([checksum](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/qualtrics-util-macos-amd64.sha256))
-- macOS (Apple Silicon): [qualtrics-util-macos-arm64](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/qualtrics-util-macos-arm64) ([checksum](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/qualtrics-util-macos-arm64.sha256))
-- Windows (AMD64): [qualtrics-util-windows-amd64.exe](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/qualtrics-util-windows-amd64.exe) ([checksum](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/qualtrics-util-windows-amd64.exe.sha256))
+- Linux (AMD64): [qualtrics-util-linux-amd64](https://github.com/${REPO}/releases/download/${TAG_NAME}/qualtrics-util-linux-amd64) ([checksum](https://github.com/${REPO}/releases/download/${TAG_NAME}/qualtrics-util-linux-amd64.sha256))
+- macOS (Intel): [qualtrics-util-macos-amd64](https://github.com/${REPO}/releases/download/${TAG_NAME}/qualtrics-util-macos-amd64) ([checksum](https://github.com/${REPO}/releases/download/${TAG_NAME}/qualtrics-util-macos-amd64.sha256))
+- macOS (Apple Silicon): [qualtrics-util-macos-arm64](https://github.com/${REPO}/releases/download/${TAG_NAME}/qualtrics-util-macos-arm64) ([checksum](https://github.com/${REPO}/releases/download/${TAG_NAME}/qualtrics-util-macos-arm64.sha256))
+- Windows (AMD64): [qualtrics-util-windows-amd64.exe](https://github.com/${REPO}/releases/download/${TAG_NAME}/qualtrics-util-windows-amd64.exe) ([checksum](https://github.com/${REPO}/releases/download/${TAG_NAME}/qualtrics-util-windows-amd64.exe.sha256))
 
 ## Usage
 
 Download the appropriate executable for your platform, make it executable (Linux/macOS), and run:
 
-```bash
+bash
 ./qualtrics-util --config config/config_qualtrics.yaml --cmd list
-```
+bash
 
 See README.md for full documentation.
-ENDOFFILE
+NOTES
 
     - name: Create Release
       uses: softprops/action-gh-release@v1
