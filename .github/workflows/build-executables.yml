@@ -128,7 +128,7 @@ jobs:
 
     - name: Create release notes
       run: |
-        cat > release-notes.md << EOF
+        cat > release-notes.md <<'ENDOFFILE'
 # Qualtrics Util ${{ github.ref_name }}
 
 ## Downloads
@@ -146,12 +146,12 @@ jobs:
 
 Download the appropriate executable for your platform, make it executable (Linux/macOS), and run:
 
-\`\`\`bash
+```bash
 ./qualtrics-util --config config/config_qualtrics.yaml --cmd list
-\`\`\`
+```
 
 See README.md for full documentation.
-EOF
+ENDOFFILE
 
     - name: Create Release
       uses: softprops/action-gh-release@v1
