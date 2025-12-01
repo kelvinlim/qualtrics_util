@@ -37,10 +37,12 @@ from requests.packages.urllib3.exceptions import InsecureRequestWarning
 
 
 
-__version_info__ = ('2', '0', '11')
+__version_info__ = ('2', '0', '12')
 __version__ = '.'.join(__version_info__)
 __version_history__ = \
 """
+2.0.12 - fixed VA error on getting extra key 'mailingListUnsubscribed 
+        and empty email address
 2.0.11 - added datetime scheduling logic to modular src code
 2.0.10 - added IANA timezone validation for project:TIMEZONE and embedded_data:TimeZone
          with error messages including file name and line number
@@ -1046,6 +1048,13 @@ class QualtricsDist:
             newDict = self.embedded_flat2nested(data['embeddedData'])  
             pass
               
+        # 20251201 - on va getting extra key 'mailingListUnsubscribed' which causes error
+        if 'mailingListUnsubscribed' in data:
+            del data['mailingListUnsubscribed']
+        # 20251201 - on va getting error that email can't be empty
+        if data['email'] is None:
+            del data['email']
+
         response = requests.put(baseUrl, json=data, headers=headers,verify=self.verify)
 
         d = json.loads(response.text)
