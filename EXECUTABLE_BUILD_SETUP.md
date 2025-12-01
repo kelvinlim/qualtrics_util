@@ -50,6 +50,7 @@ make clean
 ## GitHub Actions Build
 
 The `.github/workflows/build-executables.yml` workflow automatically builds executables for:
+
 - Linux (AMD64)
 - macOS (Intel - AMD64)
 - macOS (Apple Silicon - ARM64)
@@ -58,12 +59,14 @@ The `.github/workflows/build-executables.yml` workflow automatically builds exec
 ### Trigger a Build
 
 #### Automatic (on Git Tags)
+
 ```bash
 git tag v2.0.10
 git push origin v2.0.10
 ```
 
 #### Manual (via GitHub UI)
+
 1. Go to Actions
 2. Select "Build Cross-Platform Executables"
 3. Click "Run workflow"
@@ -73,6 +76,7 @@ git push origin v2.0.10
 ### Build Products
 
 Each build produces:
+
 - Executable file (platform-specific)
 - SHA256 checksum file
 - All uploaded as GitHub Release assets
@@ -82,6 +86,7 @@ Each build produces:
 ### Download
 
 Download from GitHub Releases:
+
 ```
 https://github.com/kelvinlim/qualtrics_util/releases
 ```
@@ -89,12 +94,14 @@ https://github.com/kelvinlim/qualtrics_util/releases
 ### Installation
 
 **Linux:**
+
 ```bash
 chmod +x qualtrics-util-linux-amd64
 sudo mv qualtrics-util-linux-amd64 /usr/local/bin/qualtrics-util
 ```
 
 **macOS:**
+
 ```bash
 chmod +x qualtrics-util-macos-arm64
 sudo mv qualtrics-util-macos-arm64 /usr/local/bin/qualtrics-util
@@ -123,6 +130,7 @@ The `qualtrics-util.spec` file contains:
 ### Customization
 
 Edit `qualtrics-util.spec` to:
+
 - Add icons
 - Change output name
 - Include additional files
@@ -144,6 +152,7 @@ hiddenimports=[
 ### Large Executable Size
 
 The executable includes all dependencies. To reduce size:
+
 - Remove unused packages from requirements.txt
 - Use `excludes` in spec file
 - Consider using UPX compression
@@ -151,6 +160,7 @@ The executable includes all dependencies. To reduce size:
 ### Build Fails
 
 Check:
+
 1. All dependencies installed
 2. PyInstaller up to date: `pip install --upgrade pyinstaller`
 3. Check build logs in `build/qualtrics-util/`
@@ -158,6 +168,7 @@ Check:
 ## GitHub Actions Logs
 
 View build progress at:
+
 ```
 https://github.com/kelvinlim/qualtrics_util/actions
 ```
@@ -186,6 +197,9 @@ make build
 # Clean artifacts
 make clean
 
+# to see all tags
+git tags -l
+
 # Build for release
 git tag v2.0.10 && git push origin v2.0.10
 ```
@@ -196,4 +210,3 @@ git tag v2.0.10 && git push origin v2.0.10
 - No Python installation required on target system
 - Config files are included in the executable bundle
 - Size: ~30-40MB depending on platform
-
