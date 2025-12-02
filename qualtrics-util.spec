@@ -18,28 +18,28 @@ block_cipher = None
 
 # Determine the entry point
 a = Analysis(
-    ['standalone_main.py'],  # Use standalone entry point that handles imports correctly
-    pathex=[],
+    ['standalone_main.py'],  # Use monolithic standalone entry point
+    pathex=[],  # Use current directory
     binaries=[],
     datas=[
         ('config', 'config'),  # Include config directory
     ],
     hiddenimports=[
-        # Collect all pandas submodules
-        *collect_submodules('pandas'),
-        
-        # Collect all numpy submodules
-        *collect_submodules('numpy'),
-        
-        # Core dependencies
+        # Core dependencies for monolithic version
         'requests',
-        'yaml',
+        'yaml', 
         'python-dotenv',
         'dotenv',
         'dateutil',
         'certifi',
         'charset_normalizer',
         'idna',
+        
+        # Collect all pandas submodules
+        *collect_submodules('pandas'),
+        
+        # Collect all numpy submodules
+        *collect_submodules('numpy'),
     ],
     runtime_hooks=[],
     excludes=[

@@ -37,13 +37,12 @@ from requests.packages.urllib3.exceptions import InsecureRequestWarning
 
 
 
-__version_info__ = ('2', '0', '27')
+__version_info__ = ('2', '0', '29')
 __version__ = '.'.join(__version_info__)
 __version_history__ = \
 """
-2.0.27 - fixed VA error on getting extra key 'mailingListUnsubscribed 
-        and empty email address
-2.0.11 - added datetime scheduling logic to modular src code
+2.0.29 - fixed VA error on getting extra key mailingListUnsubscribed 
+2.0.11 - added datetime scheduling logic to modular src code 
 2.0.10 - added IANA timezone validation for project:TIMEZONE and embedded_data:TimeZone
          with error messages including file name and line number
 2.0.9 - fix bug to determine sms vs. email from config for calling

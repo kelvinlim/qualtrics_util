@@ -6,9 +6,10 @@ import sys
 import argparse
 
 # Import from the monolithic file (which has timezone validation)
-from qualtrics_util import QualtricsDist, __version__
+from qualtrics_util import QualtricsDist, __version__, __version_history__
 
 version_history = """
+2.0.28 - fixed VA error on getting extra key mailingListUnsubscribed 
 2.0.11 - added datetime scheduling logic to modular src code
 2.0.10 - added IANA timezone validation for project:TIMEZONE and embedded_data:TimeZone
          with error messages including file name and line number
@@ -129,7 +130,7 @@ def main():
 
     if args.history:
         print(f"qualtrics-util Version: {__version__}")
-        print(version_history)
+        print(__version_history__)
         return
 
     # Create QualtricsDist instance
