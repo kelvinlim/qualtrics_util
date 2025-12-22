@@ -37,10 +37,11 @@ from requests.packages.urllib3.exceptions import InsecureRequestWarning
 
 
 
-__version_info__ = ('2', '0', '30')
+__version_info__ = ('2', '0', '31')
 __version__ = '.'.join(__version_info__)
 __version_history__ = \
 """
+2.0.31 - changed pyinstaller spec to strip=True to reduce size of executable
 2.0.30 - fixed another extra key with contactLookupId in update_embedded
 2.0.29 - fixed VA error on getting extra key mailingListUnsubscribed 
 2.0.11 - added datetime scheduling logic to modular src code 
