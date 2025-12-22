@@ -34,12 +34,7 @@ a = Analysis(
         'certifi',
         'charset_normalizer',
         'idna',
-        
-        # Collect all pandas submodules
-        *collect_submodules('pandas'),
-        
-        # Collect all numpy submodules
-        *collect_submodules('numpy'),
+        'pandas',
     ],
     runtime_hooks=[],
     excludes=[
@@ -64,7 +59,7 @@ exe = EXE(
     name='qualtrics-util',
     debug=False,
     bootloader_ignore_signals=False,
-    strip=False,
+    strip=True,
     upx=True,
     upx_exclude=[],
     runtime_tmpdir=None,
@@ -75,4 +70,5 @@ exe = EXE(
     codesign_identity=None,
     entitlements_file=None,
     icon=None,  # Add icon file path if you have one
+    onefile=True,
 )
