@@ -16,18 +16,14 @@ from PyInstaller.utils.hooks import collect_all, collect_submodules
 
 block_cipher = None
 
-# Collect numpy and pandas dependencies
-numpy_data, numpy_binaries, numpy_hiddenimports = collect_all('numpy')
-pandas_data, pandas_binaries, pandas_hiddenimports = collect_all('pandas')
-
 # Determine the entry point
 a = Analysis(
     ['standalone_main.py'],  # Use monolithic standalone entry point
     pathex=[],  # Use current directory
-    binaries=[] + numpy_binaries + pandas_binaries,
+    binaries=[],
     datas=[
         ('config', 'config'),  # Include config directory
-    ] + numpy_data + pandas_data,
+    ],
     hiddenimports=[
         # Core dependencies for monolithic version
         'requests',
@@ -38,7 +34,15 @@ a = Analysis(
         'certifi',
         'charset_normalizer',
         'idna',
-    ] + numpy_hiddenimports + pandas_hiddenimports,
+        'pandas',
+        'numpy',
+        
+        # Collect all pandas submodules
+        *collect_submodules('pandas'),
+        
+        # Collect all numpy submodules
+        *collect_submodules('numpy'),
+    ],
     runtime_hooks=[],
     excludes=[
         'matplotlib',
@@ -62,8 +66,8 @@ exe = EXE(
     name='qualtrics-util',
     debug=False,
     bootloader_ignore_signals=False,
-    strip=True,
-    upx=True,
+    strip=False,
+    upx=False,
     upx_exclude=[],
     runtime_tmpdir=None,
     console=True,
