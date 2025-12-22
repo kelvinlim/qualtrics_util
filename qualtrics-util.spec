@@ -16,14 +16,18 @@ from PyInstaller.utils.hooks import collect_all, collect_submodules
 
 block_cipher = None
 
+# Collect numpy and pandas dependencies
+numpy_data, numpy_binaries, numpy_hiddenimports = collect_all('numpy')
+pandas_data, pandas_binaries, pandas_hiddenimports = collect_all('pandas')
+
 # Determine the entry point
 a = Analysis(
     ['standalone_main.py'],  # Use monolithic standalone entry point
     pathex=[],  # Use current directory
-    binaries=[],
+    binaries=[] + numpy_binaries + pandas_binaries,
     datas=[
         ('config', 'config'),  # Include config directory
-    ],
+    ] + numpy_data + pandas_data,
     hiddenimports=[
         # Core dependencies for monolithic version
         'requests',
@@ -34,8 +38,7 @@ a = Analysis(
         'certifi',
         'charset_normalizer',
         'idna',
-        'pandas',
-    ],
+    ] + numpy_hiddenimports + pandas_hiddenimports,
     runtime_hooks=[],
     excludes=[
         'matplotlib',
@@ -70,5 +73,5 @@ exe = EXE(
     codesign_identity=None,
     entitlements_file=None,
     icon=None,  # Add icon file path if you have one
-    onefile=True,
+    onefile=False,
 )
