@@ -45,7 +45,8 @@
             "console": "integratedTerminal",
             "args": [
                 "--config",
-                "config_study358.yaml",
+                //"config_study358.yaml",
+                "config_qualtrics.yaml",
                 "--cmd",
                 "list",
                 "--verbose",
@@ -60,7 +61,8 @@
             "console": "integratedTerminal",
             "args": [
                 "--config",
-                "config_study358.yaml",
+                //"config_study358.yaml",
+                "config_qualtrics.yaml",
                 "--cmd",
                 "send",
                 "--verbose",

@@ -37,10 +37,11 @@ from requests.packages.urllib3.exceptions import InsecureRequestWarning
 
 
 
-__version_info__ = ('2', '0', '29')
+__version_info__ = ('2', '0', '30')
 __version__ = '.'.join(__version_info__)
 __version_history__ = \
 """
+2.0.30 - fixed another extra key with contactLookupId in update_embedded
 2.0.29 - fixed VA error on getting extra key mailingListUnsubscribed 
 2.0.11 - added datetime scheduling logic to modular src code 
 2.0.10 - added IANA timezone validation for project:TIMEZONE and embedded_data:TimeZone
@@ -822,6 +823,9 @@ class QualtricsDist:
         contactList = self.get_contact_list()
         if contactList is not None:
             for contact in contactList:
+                # debug
+                if contact['email'] == 'kolim@umn.edu':
+                    print("Debug kolim")
                 self.update_embedded(contact['contactId'])
 
     def embedded_flat2nested(self, embData:dict, sep='__')-> dict:
@@ -1054,6 +1058,10 @@ class QualtricsDist:
         if data['email'] is None:
             del data['email']
 
+        # 20251221 - getting error with Error: Unexpected json key provided: contactLookupId
+        if 'contactLookupId' in data:
+            del data['contactLookupId']
+            
         response = requests.put(baseUrl, json=data, headers=headers,verify=self.verify)
 
         d = json.loads(response.text)
