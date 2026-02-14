@@ -1,4 +1,6 @@
 .venv/
+qualtrics_token_umn
+qualtrics_token_va
 qualtrics_token
 build/
 dist/
